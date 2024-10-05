@@ -23,9 +23,9 @@ class AdFactory extends Factory
             'rooms' => $this->faker->numberBetween(1, 5),
             'address' => $this->faker->address(),
             'gender' => $this->faker->randomElement(['male', 'female']),
-            'branch_id' => \App\Models\Branch::factory(),
-            'status_id' => \App\Models\Status::factory(1),
-            'user_id' => \App\Models\User::factory(1,50)
+            'branch_id' => \App\Models\Branch::inRandomOrder()->first()->id ?? null,
+            'status_id' => \App\Models\Status::inRandomOrder()->first()->id ?? null,
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id ?? null,
         ];
     }
 }
